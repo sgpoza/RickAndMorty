@@ -10,18 +10,18 @@ import SwiftUI
 struct PickerFilter: View {
     var title: String
     @Binding var value: String
-    var titleSize: CGFloat = 80.0
     var options: [String]
 
     var body: some View {
-        FilterRow(title: title, value: $value, titleSize: titleSize) {
+        FilterRow(title: title, value: $value) {
             Picker(title, selection: $value) {
                 Text("All").tag("")
                 ForEach(options, id: \.self) { element in
                     Text(element.capitalized).tag(element)
                 }
             }
-            .frame(alignment: .leading)
+            .padding(.leading, -12.0)
+            .frame(height: 50.0)
         }
     }
 }

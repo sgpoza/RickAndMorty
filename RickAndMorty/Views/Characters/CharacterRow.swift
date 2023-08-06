@@ -37,7 +37,7 @@ struct CharacterRow: View {
 }
 
 struct CharacterRow_Previews: PreviewProvider {
-    static var character : Character = JSONHelper().load("characterData.json")
+    static var character : Character = JSONHelper().load("rickData.json")
     
     static var previews: some View {
         Group {

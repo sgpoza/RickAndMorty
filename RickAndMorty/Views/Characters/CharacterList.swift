@@ -59,7 +59,6 @@ struct CharacterList: View {
 }
 
 struct CharacterList_Previews: PreviewProvider {
-    var service: APIService = APIService()
     
     static var previews: some View {
         CharacterList()

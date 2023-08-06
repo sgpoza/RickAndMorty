@@ -10,12 +10,11 @@ import SwiftUI
 struct TextFilter: View {
     var title: String
     @Binding var value: String
-    var titleSize: CGFloat = 80.0
 
     var body: some View {
-        FilterRow(title: title, value: $value, titleSize: titleSize) {
+        FilterRow(title: title, value: $value) {
             TextField(title, text: $value)
-                .frame(alignment: .trailing)
+                .frame(height: 50.0)
         }
     }
 }

@@ -20,9 +20,6 @@ struct ContentView: View {
     var body: some View {
         CharacterList()
             .padding(.horizontal, 2.0)
-            .tabItem {
-                Label("Characters", systemImage: "star")
-            }
             .onAppear {
                 service.getCharacters()
             }
