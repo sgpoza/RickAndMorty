@@ -27,6 +27,12 @@ struct CharacterRow: View {
             
             Spacer()
         }
+        .padding(.top)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.white)
+        .cornerRadius(8)
+        .shadow(radius: 4)
+        .scaleEffect(1.0)
     }
 }
 

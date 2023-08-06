@@ -8,19 +8,11 @@
 import Foundation
 import SwiftUI
 
-// MARK: - CharacterResponse
 struct CharacterResponse: Decodable {
     let info: PageInfo
     let results: [Character]
 }
 
-struct PageInfo: Decodable {
-    let count, pages: Int
-    let next: String?
-    let prev: String?
-}
-
-// MARK: - Character
 struct Character: Hashable, Decodable, Identifiable {
     let id: Int
     let name: String
@@ -35,20 +27,24 @@ struct Character: Hashable, Decodable, Identifiable {
     let created: String
 }
 
-enum Gender: String, Hashable, Decodable {
+enum Gender: String, Hashable, Decodable, CaseIterable, Identifiable {
     case female = "Female"
     case male = "Male"
+    case genderless = "Genderless"
     case unknown = "unknown"
+    
+    var id: String { self.rawValue }
 }
 
-// MARK: - Location
 struct LocationData: Hashable, Decodable {
     let name: String
     let url: String
 }
 
-enum Status: String, Hashable, Decodable {
+enum Status: String, Hashable, Decodable, CaseIterable, Identifiable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
+    
+    var id: String { self.rawValue }
 }

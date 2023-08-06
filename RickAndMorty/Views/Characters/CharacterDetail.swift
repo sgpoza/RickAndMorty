@@ -12,37 +12,38 @@ struct CharacterDetail: View {
     var character: Character
     
     var body: some View {
-        VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: character.image)) { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            } placeholder: {
-                ProgressView()
-            }
-            
+        ScrollView {
             VStack(alignment: .leading) {
-                Text(character.name)
-                    .lineLimit(2)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+                AsyncImage(url: URL(string: character.image)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    ProgressView()
+                }
                 
-                Text("\(character.status.rawValue) - \(character.species)")
-                    .font(.title2)
-                    .padding(.bottom)
-                
-                DataLine(title: "Gender", data: character.gender.rawValue)
-                DataLine(title: "Origin", data: character.origin.name)
-                DataLine(title: "Last known location", data: character.location.name)
-                if let episode = service.characterFirstEpisode {
-                    DataLine(title: "First seen in", data: episode.name)
+                VStack(alignment: .leading) {
+                    Text(character.name)
+                        .lineLimit(2)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    
+                    Text("\(character.status.rawValue.capitalized) - \(character.species)")
+                        .font(.title2)
+                        .padding(.bottom)
+                    
+                    DataRow(title: "Gender", data: character.gender.rawValue.capitalized)
+                    DataRow(title: "Origin", data: character.origin.name.capitalized)
+                    DataRow(title: "Last known location", data: character.location.name)
+                    if let episode = service.characterFirstEpisode {
+                        DataRow(title: "First seen in", data: episode.name)
+                    }
                 }
             }
-        }
-        .frame(maxWidth: .infinity)
-        .padding()
-        .onAppear {
-            service.getEpisode(url: character.episode[0])
+            .padding(.horizontal)
+            .onAppear {
+                service.getEpisode(url: character.episode[0])
+            }
         }
     }
 }

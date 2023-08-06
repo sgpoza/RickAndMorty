@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - Episode
 struct Episode: Hashable, Codable, Identifiable {
     let id: Int
     let name, airDate, episode: String

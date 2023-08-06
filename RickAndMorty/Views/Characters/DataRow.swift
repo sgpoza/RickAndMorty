@@ -1,5 +1,5 @@
 //
-//  DataLine.swift
+//  DataRow.swift
 //  RickAndMorty
 //
 //  Created by Sergio González Poza on 5/8/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DataLine: View {
+struct DataRow: View {
     var title: String
     var data: String
     
@@ -23,10 +23,9 @@ struct DataLine: View {
     }
 }
 
-struct DataLine_Previews: PreviewProvider {
-    
+struct DataRow_Previews: PreviewProvider {
     
     static var previews: some View {
-        DataLine(title: "Origin", data: "Earth")
+        DataRow(title: "Origin", data: "Earth")
     }
 }
